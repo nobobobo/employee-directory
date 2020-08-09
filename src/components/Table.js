@@ -8,6 +8,12 @@ function Table() {
         by: "default",
         asc: false
     });
+    const [arrow, setArrow] = useState({
+        first:"△▽",
+        last:"△▽",
+        phone:"△▽",
+        email:"△▽",
+    })
     const [employees, setEmployees] = useState([]);
 
     useEffect(() => {
@@ -18,7 +24,7 @@ function Table() {
             }).catch(err => console.log(err));
     }, []);
 
-    const compareFirstName = (a, b, key) => {
+    const compare = (a, b, key) => {
         if (key === "first" || key === "last") {
             return a["name"][key] > b["name"][key] ? 1 : -1;
         } else {
@@ -30,15 +36,25 @@ function Table() {
 
         const sorted = [].concat(employees);
 
-        if (key === order.by && order.asc){
-            sorted.sort((a, b) => { return -1*compareFirstName(a,b,key)});
-            setOrder({by: key, asc: false});
+        let arrowObj = {
+            first:"△▽",
+            last:"△▽",
+            phone:"△▽",
+            email:"△▽",
+        }
+
+        if (key === order.by && order.asc) {
+            sorted.sort((a, b) => { return -1 * compare(a, b, key) });
+            setOrder({ by: key, asc: false });
+            arrowObj[key] = "△▼";
         } else {
-            sorted.sort((a, b) => { return compareFirstName(a,b,key)});
-            setOrder({by: key, asc: true});
-        } 
+            sorted.sort((a, b) => { return compare(a, b, key) });
+            setOrder({ by: key, asc: true });
+            arrowObj[key] = "▲▽";
+        }
 
         setEmployees(sorted);
+        setArrow(arrowObj);
     }
 
     return (
@@ -46,10 +62,10 @@ function Table() {
             <thead>
                 <tr>
                     <th scope="col">Image</th>
-                    <th scope="col"><div id="first" onClick={sortOnColumn}>First Name</div></th>
-                    <th scope="col"><div id="last" onClick={sortOnColumn}>Last Name</div></th>
-                    <th scope="col"><div id="phone" onClick={sortOnColumn}>Phone #</div></th>
-                    <th scope="col"><div id="email" onClick={sortOnColumn}>Email</div></th>
+                    <th scope="col"><div id="first" onClick={sortOnColumn}>First Name {arrow.first}</div></th>
+                    <th scope="col"><div id="last" onClick={sortOnColumn}>Last Name  {arrow.last}</div></th>
+                    <th scope="col"><div id="phone" onClick={sortOnColumn}>Phone #  {arrow.phone}</div></th>
+                    <th scope="col"><div id="email" onClick={sortOnColumn}>Email  {arrow.email}</div></th>
                 </tr>
             </thead>
             <tbody>
