@@ -77,9 +77,7 @@ function Body() {
 
         const filtOrg = employees.original.filter((emp) => {return (
               emp.name.first.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-              emp.name.last.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-              emp.phone.toLowerCase().indexOf(value.toLowerCase()) > -1 ||
-              emp.email.toLowerCase().indexOf(value.toLowerCase()) > -1
+              emp.name.last.toLowerCase().indexOf(value.toLowerCase()) > -1 
             );});
         
         setEmployees({...employees, filtered: filtOrg}); 
