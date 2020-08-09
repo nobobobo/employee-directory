@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "../components/Navbar";
-import Table from "../components/Table";
+import Body from "../components/Body";
 
 
 function Page() {
@@ -8,7 +8,7 @@ function Page() {
         <div>
             <Navbar />
             <div className="container">
-                <Table />
+                <Body />
             </div>
         </div>
     );
