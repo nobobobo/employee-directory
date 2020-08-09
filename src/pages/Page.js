@@ -8,7 +8,7 @@ function Page() {
         <div>
             <Navbar />
             <div className="container">
-            <Table />
+                <Table />
             </div>
         </div>
     );

@@ -1,10 +1,11 @@
 import React from "react";
 
 function TableElm(props) {
-    console.log(props);
+
     return (
+        
         <tr>
-            <td><img src={props.picture.thumbnail} /></td>
+            <td><img src={props.picture.thumbnail} alt={"image of "+ props.id.name} /></td>
             <td>{props.name.first}</td>
             <td>{props.name.last}</td>
             <td>{props.phone}</td>

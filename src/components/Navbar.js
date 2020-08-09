@@ -1,8 +1,11 @@
 import React from "react";
 
-function Navbar(){
+function Navbar() {
     return (
-        <div> test </div>
+        <div className="jumbotron">
+            <h1 className="display-4 text-center">Employee Diretory</h1>
+
+        </div>
     );
 }
 
