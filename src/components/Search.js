@@ -10,7 +10,7 @@ function Search({ term, handleInputChange }) {
                     onChange={handleInputChange}
                     className="form-control"
                     id="searchTerm"
-                    placeholder="Search by first name"
+                    placeholder="Search by first or last name"
                     />
             </div>
         </form>
